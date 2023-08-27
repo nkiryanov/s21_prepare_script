@@ -11,4 +11,4 @@ source "$LIB_FUNCTIONS"
 
 
 install_brew_goinfree
-set_brew_available_at_new_shell_opened
+# install_brew_packages

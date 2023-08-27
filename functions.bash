@@ -55,21 +55,21 @@ set_brew_available_at_new_shell_opened() {
 }
 
 install_brew_packages() {
-  brew install pkg-config
-  brew install pyenv
   brew install fish
+  brew install pkg-config
+  # brew install pyenv
 }
 
 install_brew_goinfree() {
-  local goinfre="/opt/goinfre/${USER}"
-  local homebrew_location="${goinfre}/homebrew"
+  # local goinfre="/opt/goinfre/${USER}"
+  # local homebrew_location="${goinfre}/homebrew"
+  local homebrew_location="${HOME}/homebrew"
 
   if [[ ! -e $homebrew_location ]]; then
     echo_info "It's looks like homewbrew not installed. Do it"
     echo_info "Install location ${homebrew_location}"
 
     install_brew "$homebrew_location"
-    install_brew_packages
   else
     echo_info "It's looks like homebrew installed already"
   fi
