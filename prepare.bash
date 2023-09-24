@@ -9,6 +9,10 @@ LIB_FUNCTIONS="${SCRIPT_ROOT}functions.bash"
 
 source "$LIB_FUNCTIONS"
 
+USER_GOINFRE="/opt/goinfre/${USER}"
 
-install_brew_goinfree
-# install_brew_packages
+install_brew_if_needed "${USER_GOINFRE}"
+install_brew_packages
+
+move_docker_data "${USER_GOINFRE}"
+

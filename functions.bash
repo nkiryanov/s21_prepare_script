@@ -60,10 +60,9 @@ install_brew_packages() {
   # brew install pyenv
 }
 
-install_brew_goinfree() {
-  # local goinfre="/opt/goinfre/${USER}"
-  # local homebrew_location="${goinfre}/homebrew"
-  local homebrew_location="${HOME}/homebrew"
+install_brew_if_needed() {
+  local install_location="$1"
+  local homebrew_location="${install_location}/homebrew"
 
   if [[ ! -e $homebrew_location ]]; then
     echo_info "It's looks like homewbrew not installed. Do it"
@@ -75,4 +74,16 @@ install_brew_goinfree() {
   fi
 
   set_brew_available_at_new_shell_opened "${homebrew_location}"
+}
+
+move_docker_data_to_location() {
+  local move_location="$1"
+  local new_docker_data_location="${move_location}/Docker"
+  local default_docker_data_location="${HOME}/Library/Containers/com.docker.docker/Data"
+
+  mkdir -p "${new_docker_data_location}"
+  mkdir -p "${default_docker_data_location}"
+
+  rm -rf "${default_docker_data_location}"
+  ln -s "${new_docker_data_location}" "${default_docker_data_location}"
 }
