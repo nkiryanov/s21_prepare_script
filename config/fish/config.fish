@@ -5,5 +5,5 @@ if status is-interactive
     fish_vi_key_bindings
 
     # Add Visual Studio Code directory to PATH to run just 'code .'
-    fish_add_path "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/"
+    fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
 end
