@@ -2,10 +2,10 @@
 
 # shellcheck disable=SC1090
 
-SCRIPT_ROOT="$(cd "${0%/*}" && pwd)/"
-LIB_COMMON_FUNCTIONS="${SCRIPT_ROOT}common_functions.bash"
-LIB_INSTALL_BREW_FUNCTIONS="${SCRIPT_ROOT}install_brew_functions.bash"
-LIB_INSTALL_FISH_SHELL_FUNCTIONS="${SCRIPT_ROOT}install_fish_shell_functions.bash"
+SCRIPT_ROOT="$(cd "${0%/*}" && pwd)"
+LIB_COMMON_FUNCTIONS="${SCRIPT_ROOT}/src/common_functions.bash"
+LIB_INSTALL_BREW_FUNCTIONS="${SCRIPT_ROOT}/src/install_brew_functions.bash"
+LIB_INSTALL_FISH_SHELL_FUNCTIONS="${SCRIPT_ROOT}/src/install_fish_shell_functions.bash"
 
 source "$LIB_COMMON_FUNCTIONS"
 source "$LIB_INSTALL_BREW_FUNCTIONS"

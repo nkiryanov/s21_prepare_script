@@ -9,6 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-  
-      - name: Lint
-        run: shellcheck *.bash
+
+      - name: Shellcheck lint
+        run: shellcheck *.bash src/*.bash && echo "Shellcheck passed"
