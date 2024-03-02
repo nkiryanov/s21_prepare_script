@@ -36,9 +36,10 @@ install_brew_if_needed() {
     echo_info "Install location ${homebrew_location}"
 
     install_brew "${homebrew_location}"
+  
+    set_brew_available_at_new_shell_opened "${homebrew_location}"
   else
-    echo_info "It's looks like homebrew installed already"
+    echo_info "It's looks like homebrew installed already (at least the directory '${homebrew_location}' exists)"
   fi
 
-  set_brew_available_at_new_shell_opened "${homebrew_location}"
 }

@@ -4,6 +4,6 @@ if status is-interactive
     # Set fish Vim key bindings
     fish_vi_key_bindings
 
-    # Add Visual Studio Code directory to PATH to run just 'code .'
-    fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
+    # Set brew completions; Look for function 'set_brew_completions' in functions
+    set_brew_completions
 end
