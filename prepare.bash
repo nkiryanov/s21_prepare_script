@@ -6,8 +6,8 @@ SCRIPT_ROOT="$(cd "${0%/*}" && pwd)"
 LIB_COMMON_FUNCTIONS="${SCRIPT_ROOT}/src/common_functions.bash"
 LIB_INSTALL_BREW_FUNCTIONS="${SCRIPT_ROOT}/src/install_brew_functions.bash"
 
-source "$LIB_COMMON_FUNCTIONS"
-source "$LIB_INSTALL_BREW_FUNCTIONS"
+source "${LIB_COMMON_FUNCTIONS}"
+source "${LIB_INSTALL_BREW_FUNCTIONS}"
 
 USER_GOINFRE="/opt/goinfre/${USER}"
 GOINFRE_APPLICATIONS="${USER_GOINFRE}/Applications"
@@ -18,6 +18,7 @@ BREW_PACKAGES_TO_INSTALL=(
 BREW_CASKS_TO_INSTALL=(
   'telegram'
   'postico'
+  'yandex-music-unofficial'
 )
 
 # Run small configurations scripts

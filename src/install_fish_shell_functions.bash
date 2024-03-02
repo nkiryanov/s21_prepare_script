@@ -8,7 +8,7 @@ get_fish_app_latest_download_link() {
 
   fish_download_link=$(curl --silent "${fish_last_release}" | grep "browser_download_url.*app\.zip" | grep --only-matching "https.*app\.zip")
   
-  echo "$fish_download_link"
+  echo "${fish_download_link}"
 }
 
 install_fish_shell_binaries() {
@@ -57,7 +57,7 @@ install_fish_shell_app() {
 
   # Set hardcoded fish app link if actual app version could not captured.
   # It may happened if to many API requests executed and github throttle the requests
-  if [[ -z "$fish_app_link" ]]; then 
+  if [[ -z "${fish_app_link}" ]]; then
     fish_app_link="https://github.com/fish-shell/fish-shell/releases/download/3.6.4/fish-3.6.4.app.zip"
   fi
 
@@ -65,9 +65,18 @@ install_fish_shell_app() {
   unzip -uq "${fish_app_archive}" -d "${applications}"
   rm "${fish_app_archive}"; status=$?
 
-  if [[ $status -eq 0 ]]; then
+  if [[ ${status} -eq 0 ]]; then
     echo_info "fish app successfully installed"
   else 
     echo_error "Some errors occuried while installing fish"
   fi
+}
+
+copy_fish_dot_files() {
+  local fish_dot_files_path="${1:?The fish dot files location is required}"
+  local fish_dot_files_to_copy_to="${HOME}/.config/fish"
+
+  cp -R "${fish_dot_files_path}" "${fish_dot_files_to_copy_to}"
+
+  echo_info "Fish dot files copyed from '${fish_dot_files_path}' to '${fish_dot_files_to_copy_to}'"
 }

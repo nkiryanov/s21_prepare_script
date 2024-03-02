@@ -17,7 +17,7 @@ echo_info() {
   local clear='\033[0m'
   local green='\033[3;32m'
 
-  echo -e "${green}$message${clear}"
+  echo -e "${green}${message}${clear}"
 }
 
 add_line_to_file() {
@@ -40,20 +40,20 @@ add_line_to_file() {
 
   # Look for the variable '$line_to_add' in the file
   while read -r line; do
-    if [[ "$line" == "$line_to_add" ]]; then
+    if [[ "${line}" == "${line_to_add}" ]]; then
       is_line_in_file_already=1
       break
     fi
   done <"${file_location}"
 
-  if [[ $is_line_in_file_already -eq 1 ]]; then
+  if [[ ${is_line_in_file_already} -eq 1 ]]; then
     echo "It's looks '${line_to_add}' in '${file_location}' already"
   else
     echo "Copying line '${line_to_add}' to the '${file_location}'"
 
     echo >> "${file_location}"
 
-    if [[ "$comment_before_line" != "not-set" ]]; then
+    if [[ "${comment_before_line}" != "not-set" ]]; then
       echo "# ${comment_before_line}" >> "${file_location}"
     fi
 
@@ -74,7 +74,7 @@ add_path_to_zsh_path_env() {
   local zshenv_location="${HOME}/.zshenv"
   local command_to_add
 
-  if [[ ! -r "$zshenv_location" ]]; then
+  if [[ ! -r "${zshenv_location}" ]]; then
     touch "${zshenv_location}"
   fi
 
@@ -110,7 +110,7 @@ add_user_docker_binary_to_zsh_path_env() {
   local user_docker_path_location="${HOME}/.docker/bin"
   local comment="Docker binaries in user space. Required if system wide binaries not installed."
 
-  if [[ -d "$user_docker_path_location" ]]; then
+  if [[ -d "${user_docker_path_location}" ]]; then
     add_path_to_zsh_path_env "${user_docker_path_location}" "${comment}"
   fi
 }

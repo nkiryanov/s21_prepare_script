@@ -10,5 +10,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Shellcheck lint
-        run: shellcheck *.bash src/*.bash && echo "Shellcheck passed"
+      - name: Lint
+        run: make lint

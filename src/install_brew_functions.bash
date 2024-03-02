@@ -20,7 +20,7 @@ set_brew_available_at_new_shell_opened() {
 install_brew() {
   local homebrew_location="${1:?Homewbrew location has to be set}"
 
-  git clone https://github.com/Homebrew/brew "$homebrew_location"
+  git clone https://github.com/Homebrew/brew "${homebrew_location}"
 
   eval "$("${homebrew_location}"/bin/brew shellenv)"
   brew update --force --quiet
@@ -31,7 +31,7 @@ install_brew_if_needed() {
   local install_location="${1:?Install brew location has to be set}"
   local homebrew_location="${install_location}/homebrew"
 
-  if [[ ! -e $homebrew_location ]]; then
+  if [[ ! -e ${homebrew_location} ]]; then
     echo_info "It's looks like homewbrew not installed. Do it"
     echo_info "Install location ${homebrew_location}"
 
