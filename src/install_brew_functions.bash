@@ -30,8 +30,12 @@ install_brew() {
 install_brew_if_needed() {
   local install_location="${1:?Install brew location has to be set}"
   local homebrew_location="${install_location}/homebrew"
+  local -i is_brew_found
 
-  if [[ ! -e ${homebrew_location} ]]; then
+  command --search brew &> /dev/null
+  is_brew_found=$?
+
+  if [[ $is_brew_found -ne 0 ]]; then
     echo_info "It's looks like homewbrew not installed. Do it"
     echo_info "Install location ${homebrew_location}"
 
@@ -39,7 +43,6 @@ install_brew_if_needed() {
   
     set_brew_available_at_new_shell_opened "${homebrew_location}"
   else
-    echo_info "It's looks like homebrew installed already (at least the directory '${homebrew_location}' exists)"
+    echo_info "It's looks like homebrew installed already (at least the 'brew' executable found in PATH)"
   fi
-
 }
